@@ -1,0 +1,28 @@
+{
+  "name": "@ng-community/schematics",
+  "version": "0.0.0",
+  "description": "A blank schematics",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run sandbox:ng-add && npm run test:sandbox",
+    "clean": "git checkout HEAD -- sandbox && git clean -f -d sandbox",
+    "link:schematic": "npm link && cd sandbox && npm link @ng-community/schematics",
+    "test:sandbox": "cd sandbox && npm run lint && npm run build",
+    "sandbox:ng-add": "cd sandbox && ng g my-awesome-schematic:ng-add"
+  },
+  "keywords": [
+    "schematics",
+    "community"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^8.2.0",
+    "@angular-devkit/schematics": "^8.2.0",
+    "@types/jasmine": "^3.3.9",
+    "@types/node": "^8.0.31",
+    "jasmine": "^3.3.1",
+    "typescript": "~3.5.3"
+  }
+}
