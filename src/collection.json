@@ -1,9 +1,10 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "@ng-community/schematics": {
-      "description": "A blank schematic.",
-      "factory": "./@ng-community/schematics/index#@ngCommunity/schematics"
+    "ng-add": {
+      "description": "Generates a new Angular Community site to your project with the requested configurations",
+      "factory": "./ng-add/index",
+      "schema": "./ng-add/schema.json"
     }
   }
 }

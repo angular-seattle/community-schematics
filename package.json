@@ -8,7 +8,7 @@
     "clean": "git checkout HEAD -- sandbox && git clean -f -d sandbox",
     "link:schematic": "npm link && cd sandbox && npm link @ng-community/schematics",
     "test:sandbox": "cd sandbox && npm run lint && npm run build",
-    "sandbox:ng-add": "cd sandbox && ng g my-awesome-schematic:ng-add"
+    "sandbox:ng-add": "cd sandbox && ng g @ng-community/schematics:ng-add"
   },
   "keywords": [
     "schematics",
@@ -20,6 +20,8 @@
   "dependencies": {
     "@angular-devkit/core": "^8.2.0",
     "@angular-devkit/schematics": "^8.2.0",
+    "@angular/material": "^8.1.2",
+    "@angular/cdk": "^8.1.2",
     "@types/jasmine": "^3.3.9",
     "@types/node": "^8.0.31",
     "jasmine": "^3.3.1",
