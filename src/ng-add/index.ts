@@ -3,7 +3,8 @@ import {
   SchematicContext,
   Tree,
   chain,
-  noop
+  // noop,
+  externalSchematic
 } from '@angular-devkit/schematics';
 import { Schema } from './schema.model';
 
@@ -11,6 +12,15 @@ import { Schema } from './schema.model';
 // per file.
 export default function(_options: Schema): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
-    return chain([noop()]);
+    return chain([addMaterial(_options)]);
+  };
+}
+
+function addMaterial(_options: Schema): Rule {
+  return (_tree: Tree, _context: SchematicContext) => {
+    _context.logger.info('Setting up Angular Material...');
+    return externalSchematic('@angular/material', 'install', {
+      options: _options
+    });
   };
 }
