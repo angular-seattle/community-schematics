@@ -17,7 +17,11 @@ export interface NpmRegistryPackage {
   version: string;
 }
 
-export function getLatestNodeVersion(
+/**
+ * Gets the latest version number for the given package from the npm registry
+ * @param packageName The package name for which the version will be checked
+ */
+function getLatestNodeVersion(
   packageName: string
 ): Promise<NpmRegistryPackage> {
   const DEFAULT_VERSION = 'latest';
@@ -47,6 +51,10 @@ export function getLatestNodeVersion(
   }
 }
 
+/**
+ * A schematic rule factory that adds the given packages to the project's package.json dependency list.
+ * @param args an array of package names to add to the project's dependencies
+ */
 export function addPackageJsonDependencies(...args: string[]): Rule {
   const packages = args.join(',');
   return (tree: Tree, _context: SchematicContext): Observable<Tree> => {
@@ -73,6 +81,9 @@ export function addPackageJsonDependencies(...args: string[]): Rule {
   };
 }
 
+/**
+ * A schematic rule factory that adds a task to install dependencies listed in package.json
+ */
 export function installDependencies(): Rule {
   return (tree: Tree, _context: SchematicContext) => {
     _context.addTask(new NodePackageInstallTask());
