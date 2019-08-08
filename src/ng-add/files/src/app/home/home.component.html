@@ -1,0 +1,22 @@
+<section
+  class="intro"
+  [ngClass]="{
+    mobile: isHandset$ | async,
+    'handset-portrait': isHandsetPortrait$ | async
+  }"
+>
+  <div class="overlay">
+    <img
+      src="assets/img/ngseattle.png"
+      alt="<%= orgName %> Logo"
+      class="<%= dasherize(orgName) %>-logo"
+      id="<%= dasherize(orgName) %>-logo"
+      [ngClass]="{
+        mobile: isHandset$ | async
+      }"
+    />
+    <h1 class="intro-text" [ngClass]="{ mobile: isHandset$ | async }">
+      Welcome to <%= orgName %>
+    </h1>
+  </div>
+</section>

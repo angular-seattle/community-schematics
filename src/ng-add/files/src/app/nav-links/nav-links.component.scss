@@ -1,0 +1,15 @@
+mat-nav-list.list-horizontal {
+  padding: 0;
+  .mat-list-item {
+    display: inline-block;
+    height: auto;
+    width: auto;
+  }
+}
+
+.social-logo {
+  height: 16px;
+  width: auto;
+  filter: invert(1);
+  padding: 6px;
+}
