@@ -4,10 +4,6 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: 'events',
-    loadChildren: () => import('./events/events.module').then(m => m.EventsModule)
-  },
-  {
     path: '',
     pathMatch: 'full',
     component: HomeComponent

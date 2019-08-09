@@ -22,7 +22,11 @@ import { strings } from '@angular-devkit/core';
  */
 export default function(_options: Schema): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
-    return chain([addMaterial(_options), addFiles(_options)]);
+    return chain([
+      generateLibrary(),
+      addMaterial(_options),
+      addFiles(_options)
+    ]);
   };
 }
 
@@ -57,5 +61,13 @@ function addFiles(options: Schema): Rule {
       })
     ]);
     return mergeWith(sourceParamaterizedTemplates, MergeStrategy.Overwrite);
+  };
+}
+
+function generateLibrary(): Rule {
+  return (_tree: Tree, _context: SchematicContext) => {
+    return externalSchematic('@schematics/angular', 'library', {
+      name: 'state'
+    });
   };
 }
