@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 
-const routes: Routes = [
+const routes: Routes = [<% if(generateEvents) { %>
+  {
+    path: 'events',
+    loadChildren: () => import('./events/events.module').then(m => m.EventsModule)
+  },<% } %>
   {
     path: '',
     pathMatch: 'full',

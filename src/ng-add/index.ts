@@ -20,13 +20,9 @@ import { strings } from '@angular-devkit/core';
  * Entry point for the schematic
  * @param _options The options that the user declared
  */
-export default function(_options: Schema): Rule {
+export default function(options: Schema): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
-    return chain([
-      generateLibrary(),
-      addMaterial(_options),
-      addFiles(_options)
-    ]);
+    return chain([generateLibrary(), addMaterial(options), addFiles(options)]);
   };
 }
 
@@ -57,6 +53,14 @@ function addFiles(options: Schema): Rule {
           tree.overwrite(fileEntry.path, fileEntry.content);
           return null;
         }
+        // don't copy events related files if the user doesn't want them
+        // TODO: move to own schematic
+        if (
+          !options.generateEvents &&
+          fileEntry.path.match(/(events|meetup)/i)
+        ) {
+          return null;
+        }
         return fileEntry;
       })
     ]);
@@ -64,6 +68,9 @@ function addFiles(options: Schema): Rule {
   };
 }
 
+/**
+ * Calls the Angular CLI schematic to create a library project to handle state of the app.
+ */
 function generateLibrary(): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
     return externalSchematic('@schematics/angular', 'library', {

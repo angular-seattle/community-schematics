@@ -1,7 +1,17 @@
 <mat-nav-list [ngClass]="{ 'list-horizontal': horizontal }">
-  <a mat-list-item routerLink="/events" routerLinkActive="router-link-active">Events</a>
-  <a mat-list-item href="https://www.youtube.com/channel/UCsp19MwcW-g3yOLBdO5LbSg/videos">Talks</a>
-  <a mat-list-item href="https://twitter.com/ngSeattle" class="social-link"
-    ><img src="assets/img/twitter.svg" alt="twitter Logo" class="social-logo" id="twitter-logo"
+  <% if(generateEvents) { %>
+  <a mat-list-item routerLink="/events" routerLinkActive="router-link-active"
+    >Events</a
+  >
+  <% } %> <% if(pastTalks.length > 0) { %>
+  <a mat-list-item href="<%= pastTalks %>">Talks</a>
+  <% } %> <% if(twitter.length > 0) { %>
+  <a mat-list-item href="https://twitter.com/<%= twitter %>" class="social-link"
+    ><img
+      src="assets/img/twitter.svg"
+      alt="twitter Logo"
+      class="social-logo"
+      id="twitter-logo"
   /></a>
+  <% } %>
 </mat-nav-list>

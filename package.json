@@ -5,10 +5,10 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run sandbox:ng-add",
-    "clean": "git checkout HEAD -- sandbox && git clean -f -d sandbox",
+    "clean": "git checkout HEAD -- sandbox && git clean -f -d sandbox && cd sandbox && npm ci",
     "link:schematic": "npm link && cd sandbox && npm link @ng-community/schematics",
     "test:sandbox": "cd sandbox && npm run lint && npm run build",
-    "sandbox:ng-add": "cd sandbox && npm ci && ng g @ng-community/schematics:ng-add"
+    "sandbox:ng-add": "cd sandbox && ng g @ng-community/schematics:ng-add"
   },
   "keywords": [
     "schematics",

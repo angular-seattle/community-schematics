@@ -19,11 +19,23 @@
     },
     "generateEvents": {
       "type": "boolean",
-      "x-prompt": "Do you want to display event info from Meetup.com?"
+      "x-prompt": "Do you want to display event info from Meetup.com?",
+      "default": false
     },
     "meetupName": {
       "type": "string",
-      "x-prompt": "What is your meetup group name?"
+      "x-prompt": "What is your meetup group name (the name used in the meetup.com url)?",
+      "default": ""
+    },
+    "pastTalks": {
+      "type": "string",
+      "x-prompt": "Where can people find records of past talks from your group?",
+      "default": ""
+    },
+    "twitter": {
+      "type": "string",
+      "x-prompt": "What is your group's Twitter handle? (don't include @)",
+      "default": ""
     }
   },
   "required": [],
