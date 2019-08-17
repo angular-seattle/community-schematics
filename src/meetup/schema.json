@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "ng-community-meetup",
+  "title": "Angular community meetup schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "meetupName": {
+      "type": "string",
+      "x-prompt": "What is your meetup group name (the name used in the meetup.com url)?",
+      "default": ""
+    }
+  },
+  "required": ["meetupName"],
+  "additionalProperties": false
+}

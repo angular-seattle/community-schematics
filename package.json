@@ -1,14 +1,15 @@
 {
-  "name": "@ng-community/schematics",
-  "version": "0.0.0",
-  "description": "A blank schematics",
+  "name": "@ng-seattle/community-schematics",
+  "version": "1.0.0",
+  "description": "Schematics for the Angular community",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "npm run sandbox:ng-add",
+    "test": "npm run build && npm run clean && npm run test:schematic && npm run test:sandbox",
     "clean": "git checkout HEAD -- sandbox && git clean -f -d sandbox && cd sandbox && npm ci",
-    "link:schematic": "npm link && cd sandbox && npm link @ng-community/schematics",
+    "link:schematic": "npm link && cd sandbox && npm link @ng-seattle/community-schematics",
     "test:sandbox": "cd sandbox && npm run lint && npm run build",
-    "sandbox:ng-add": "cd sandbox && ng g @ng-community/schematics:ng-add"
+    "test:schematic": "npm run sandbox:ng-add",
+    "sandbox:ng-add": "cd sandbox && ng g @ng-seattle/community-schematics:ng-add"
   },
   "keywords": [
     "schematics",

@@ -24,7 +24,7 @@
       <span class="fill-remaining"></span>
       <app-nav-links
         [horizontal]="true"
-        *ngIf="!(isHandset$ | async)"
+        *ngIf="(isHandset$ | async) === false"
       ></app-nav-links>
     </mat-toolbar>
     <router-outlet></router-outlet>

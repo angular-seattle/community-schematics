@@ -4,17 +4,12 @@ import {
   Tree,
   chain,
   externalSchematic,
-  url,
-  apply,
-  template,
-  mergeWith,
-  MergeStrategy,
-  FileEntry,
-  forEach
+  noop,
+  schematic
 } from '@angular-devkit/schematics';
-
+import { addFiles } from '../utils/file-utils';
 import { Schema } from './schema.model';
-import { strings } from '@angular-devkit/core';
+import { addPropertyToPackageJson } from '../utils/package-json-utils';
 
 /**
  * Entry point for the schematic
@@ -22,7 +17,15 @@ import { strings } from '@angular-devkit/core';
  */
 export default function(options: Schema): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
-    return chain([generateLibrary(), addMaterial(options), addFiles(options)]);
+    _context.logger.info(JSON.stringify(options));
+
+    return chain([
+      generateLibrary(),
+      options.meetupName.length > 0 ? addMeetup(options) : noop(),
+      addMaterial(options),
+      addFiles(options),
+      updateScripts()
+    ]);
   };
 }
 
@@ -38,33 +41,12 @@ function addMaterial(options: Schema): Rule {
   };
 }
 
-/**
- * Adds required files to the new project
- * @param options The schematic options
- */
-function addFiles(options: Schema): Rule {
-  return (tree: Tree, _context: SchematicContext) => {
-    const sourcedTemplates = url('./files');
+function addMeetup(options: Schema): Rule {
+  const meetupName = options.meetupName;
 
-    const sourceParamaterizedTemplates = apply(sourcedTemplates, [
-      template({ ...options, ...strings }),
-      forEach((fileEntry: FileEntry) => {
-        if (tree.exists(fileEntry.path)) {
-          tree.overwrite(fileEntry.path, fileEntry.content);
-          return null;
-        }
-        // don't copy events related files if the user doesn't want them
-        // TODO: move to own schematic
-        if (
-          !options.generateEvents &&
-          fileEntry.path.match(/(events|meetup)/i)
-        ) {
-          return null;
-        }
-        return fileEntry;
-      })
-    ]);
-    return mergeWith(sourceParamaterizedTemplates, MergeStrategy.Overwrite);
+  return (_: Tree, _context: SchematicContext) => {
+    _context.logger.info('Setting up meetup...');
+    return schematic('meetup', { meetupName });
   };
 }
 
@@ -76,5 +58,19 @@ function generateLibrary(): Rule {
     return externalSchematic('@schematics/angular', 'library', {
       name: 'state'
     });
+  };
+}
+
+/**
+ * Updates scripts in the package.json file to work with the new project setup.
+ */
+function updateScripts(): Rule {
+  return (_tree: Tree, _context: SchematicContext) => {
+    addPropertyToPackageJson(_tree, _context, 'scripts', {
+      start: 'npm run build:lib && ng serve',
+      build: 'npm run build:lib && ng build --prod --progress=false',
+      'build:lib': 'ng build state'
+    });
+    return _tree;
   };
 }
