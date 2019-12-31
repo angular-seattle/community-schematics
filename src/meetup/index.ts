@@ -14,7 +14,6 @@ import { Schema } from './schema.model';
  */
 export default function(options: Schema): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
-    _context.logger.debug('made it to meetup schematic');
     return chain([addFiles(options)]);
   };
 }
