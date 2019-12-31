@@ -10,7 +10,7 @@
     "test:sandbox": "cd sandbox && npm run lint && npm run build",
     "test:schematic": "npm run sandbox:ng-add",
     "sandbox:ng-add": "cd sandbox && ng g @ng-seattle/community-schematics:ng-add",
-    "publish": "npm run build && npm publish --access public"
+    "release": "npm run build && npm publish --access public"
   },
   "keywords": [
     "schematics",
