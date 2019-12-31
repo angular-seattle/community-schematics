@@ -4,6 +4,7 @@
   "description": "Schematics for the Angular community",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "commit": "npx git-cz",
     "test": "npm run build && npm run clean && npm run test:schematic && npm run test:sandbox",
     "clean": "git checkout HEAD -- sandbox && git clean -f -d sandbox && cd sandbox && npm ci",
     "link:schematic": "npm link && cd sandbox && npm link @ng-seattle/community-schematics",
@@ -36,11 +37,19 @@
     "typescript": "~3.5.3"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.0.2"
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.1.0"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
