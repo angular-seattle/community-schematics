@@ -17,19 +17,14 @@
       "description": "The name of the organization that the schematics are begin generated for.",
       "x-prompt": "What is the name of your organization?"
     },
-    "generateEvents": {
-      "type": "boolean",
-      "x-prompt": "Do you want to display event info from Meetup.com?",
-      "default": false
-    },
     "meetupName": {
       "type": "string",
-      "x-prompt": "What is your meetup group name (the name used in the meetup.com url)?",
+      "x-prompt": "Do you want to display event info from Meetup.com? If so, what is the name of your meetup group (The name used in the meetup.com url)?",
       "default": ""
     },
     "pastTalks": {
       "type": "string",
-      "x-prompt": "Where can people find records of past talks from your group?",
+      "x-prompt": "Where can people find recordings of past talks from your group?",
       "default": ""
     },
     "twitter": {
@@ -38,6 +33,6 @@
       "default": ""
     }
   },
-  "required": [],
+  "required": ["orgName"],
   "additionalProperties": false
 }

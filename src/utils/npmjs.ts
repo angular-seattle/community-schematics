@@ -1,5 +1,5 @@
 /**
- * Taken from https://github.com/blove/angular-fire-schematics/blob/master/src/util/npmjs.ts
+ * Adapted from https://github.com/blove/angular-fire-schematics/blob/master/src/util/npmjs.ts
  */
 import { get } from 'http';
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
