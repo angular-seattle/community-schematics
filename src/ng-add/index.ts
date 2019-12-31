@@ -17,8 +17,6 @@ import { addPropertyToPackageJson } from '../utils/package-json-utils';
  */
 export default function(options: Schema): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
-    _context.logger.info(JSON.stringify(options));
-
     return chain([
       generateLibrary(),
       options.meetupName.length > 0 ? addMeetup(options) : noop(),
@@ -34,7 +32,6 @@ export default function(options: Schema): Rule {
  */
 function addMaterial(options: Schema): Rule {
   return (_: Tree, _context: SchematicContext) => {
-    _context.logger.info('Setting up Angular Material...');
     return externalSchematic('@angular/material', 'install', {
       options
     });
@@ -45,7 +42,6 @@ function addMeetup(options: Schema): Rule {
   const meetupName = options.meetupName;
 
   return (_: Tree, _context: SchematicContext) => {
-    _context.logger.info('Setting up meetup...');
     return schematic('meetup', { meetupName });
   };
 }
