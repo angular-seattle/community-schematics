@@ -30,6 +30,7 @@ $ ng add @ng-seattle/community-schematics
 - [ ] Self hosted blogs for groups
 - [ ] Calendar management without Meetup.com
 - [ ] Email list support
+- [ ] Github Pages Support
 - Have an idea? Open an issue!
 
 ## Developing
