@@ -25,7 +25,7 @@ $ ng add @ng-seattle/community-schematics
 
 ## Future Feature Plans
 
-- [ ] Easy (and non-tracking) contact sharing to help network with people you meet at group events
+- [ ] Easy (and private) contact sharing to help network with people you meet at group events
 - [ ] PWA and Angular Universal support
 - [ ] Self hosted blogs for groups
 - [ ] Calendar management without Meetup.com
