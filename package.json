@@ -9,13 +9,19 @@
     "link:schematic": "npm link && cd sandbox && npm link @ng-seattle/community-schematics",
     "test:sandbox": "cd sandbox && npm run lint && npm run build",
     "test:schematic": "npm run sandbox:ng-add",
-    "sandbox:ng-add": "cd sandbox && ng g @ng-seattle/community-schematics:ng-add"
+    "sandbox:ng-add": "cd sandbox && ng g @ng-seattle/community-schematics:ng-add",
+    "publish": "npm run build && npm publish --access public"
   },
   "keywords": [
     "schematics",
-    "community"
+    "community",
+    "angular",
+    "meetup"
   ],
-  "author": "",
+  "files": [
+    "src"
+  ],
+  "author": "Brenden Niedermeyer",
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
