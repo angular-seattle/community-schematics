@@ -4,4 +4,5 @@ export interface Schema {
   meetupName: string;
   pastTalks: string;
   twitter: string;
+  deployment: 'Azure' | 'Github Pages' | 'Netlify' | 'Now' | 'None';
 }

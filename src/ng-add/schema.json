@@ -31,6 +31,13 @@
       "type": "string",
       "x-prompt": "What is your group's Twitter handle? (don't include @)",
       "default": ""
+    },
+    "deployment": {
+      "description": "The desired automatic deployment the user would like integrated with their projent. Uses ng-add to add the correct builder",
+      "type": "string",
+      "default": "None",
+      "enum": ["Azure", "Now", "Netlify", "Github Pages", "None"],
+      "x-prompt": "Do you want to deploy your site with any of the following providers?"
     }
   },
   "required": ["orgName"],
