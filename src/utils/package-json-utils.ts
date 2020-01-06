@@ -5,9 +5,7 @@ import {
   SchematicContext
 } from '@angular-devkit/schematics';
 import {
-  parseJson,
   JsonParseMode,
-  JsonValue,
   JsonAstObject,
   parseJsonAst
 } from '@angular-devkit/core';
@@ -22,14 +20,14 @@ export enum Config {
   JsonIndentLevel = 4
 }
 
-export function getFileAsJson(host: Tree, path: string): JsonValue {
+export function getFileAsJson(host: Tree, path: string) {
   const configBuffer = host.read(path);
   if (configBuffer === null) {
     throw new SchematicsException(`Could not find (${path})`);
   }
   const content = configBuffer.toString();
 
-  return parseJson(content, JsonParseMode.Loose);
+  return JSON.parse(content);
 }
 
 export function addPropertyToPackageJson(

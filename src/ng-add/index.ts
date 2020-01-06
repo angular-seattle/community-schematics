@@ -2,14 +2,14 @@ import {
   Rule,
   SchematicContext,
   Tree,
-  chain,
-  externalSchematic,
-  noop,
-  schematic
+  chain
 } from '@angular-devkit/schematics';
-import { addFiles } from '../utils/file-utils';
 import { Schema } from './schema.model';
-import { addPropertyToPackageJson } from '../utils/package-json-utils';
+import { addPackageJsonDependencies } from '../utils/npmjs';
+import {
+  NodePackageInstallTask,
+  RunSchematicTask
+} from '@angular-devkit/schematics/tasks';
 
 /**
  * Entry point for the schematic
@@ -17,63 +17,53 @@ import { addPropertyToPackageJson } from '../utils/package-json-utils';
  */
 export default function(options: Schema): Rule {
   return (_tree: Tree, _context: SchematicContext) => {
-    return chain([
-      generateLibrary(),
-      options.meetupName.length > 0 ? addMeetup(options) : noop(),
-      addDeployment(options.deployment),
-      addMaterial(options),
-      addFiles(options),
-      updateScripts()
+    return chain([prepareDependencies(options), setupProject(options)]);
+  };
+}
+
+/**
+ * Determines which dependencies need to be installed and adds them to `package.json`
+ * @param options The options the user selected
+ */
+function prepareDependencies(options: Schema): Rule {
+  const deps = ['@angular/material'];
+
+  switch (options.deployment) {
+    case 'Azure':
+      deps.push('@azure/ng-deploy');
+      break;
+
+    case 'Github Pages':
+      deps.push('angular-cli-ghpages');
+      break;
+
+    case 'Netlify':
+      deps.push('@netlify-builder/deploy');
+      break;
+
+    case 'Now':
+      deps.push('@zeit/ng-deploy');
+      break;
+
+    default:
+      break;
+  }
+
+  return (_tree: Tree, _context: SchematicContext) => {
+    return addPackageJsonDependencies(...deps);
+  };
+}
+
+/**
+ * Add a task to install dependencies, then calls the ng-add-setup-project schematic
+ * @param options The user options passed in from the schematic
+ */
+function setupProject(options: Schema): Rule {
+  return (_tree: Tree, _context: SchematicContext) => {
+    const installTaskId = _context.addTask(new NodePackageInstallTask());
+    _context.addTask(new RunSchematicTask('ng-add-setup-project', options), [
+      installTaskId
     ]);
-  };
-}
-
-/**
- * A Rule factory that adds Angular Material to the project
- */
-function addMaterial(options: Schema): Rule {
-  return (_: Tree, _context: SchematicContext) => {
-    return externalSchematic('@angular/material', 'install', {
-      options
-    });
-  };
-}
-
-function addMeetup(options: Schema): Rule {
-  const meetupName = options.meetupName;
-
-  return (_: Tree, _context: SchematicContext) => {
-    return schematic('meetup', { meetupName });
-  };
-}
-
-/**
- * Calls the Angular CLI schematic to create a library project to handle state of the app.
- */
-function generateLibrary(): Rule {
-  return (_tree: Tree, _context: SchematicContext) => {
-    return externalSchematic('@schematics/angular', 'library', {
-      name: 'state'
-    });
-  };
-}
-
-/**
- * Updates scripts in the package.json file to work with the new project setup.
- */
-function updateScripts(): Rule {
-  return (_tree: Tree, _context: SchematicContext) => {
-    addPropertyToPackageJson(_tree, _context, 'scripts', {
-      start: 'npm run build:lib && ng serve',
-      build: 'npm run build:lib && ng build --prod --progress=false',
-      'build:lib': 'ng build state'
-    });
     return _tree;
-  };
-}
-
-function addDeployment(deployment: string): Rule {
-  return (_tree: Tree, _context: SchematicContext) => {
-    return schematic('deployments', { deployment });
   };
 }
