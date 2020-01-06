@@ -20,6 +20,7 @@ export default function(options: Schema): Rule {
     return chain([
       generateLibrary(),
       options.meetupName.length > 0 ? addMeetup(options) : noop(),
+      addDeployment(options.deployment),
       addMaterial(options),
       addFiles(options),
       updateScripts()
@@ -68,5 +69,11 @@ function updateScripts(): Rule {
       'build:lib': 'ng build state'
     });
     return _tree;
+  };
+}
+
+function addDeployment(deployment: string): Rule {
+  return (_tree: Tree, _context: SchematicContext) => {
+    return schematic('deployments', { deployment });
   };
 }

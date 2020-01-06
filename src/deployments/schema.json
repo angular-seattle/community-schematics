@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "deployments",
+  "title": "Schematics to add Angular deployment builders to a project",
+  "type": "object",
+  "properties": {
+    "deployment": {
+      "description": "The desired automatic deployment the user would like integrated with their projent. Uses ng-add to add the correct builder",
+      "type": "string",
+      "default": "None",
+      "enum": ["Azure", "Now", "Netlify", "Github Pages", "None"],
+      "x-prompt": "Do you want to deploy your site with any of the following providers?"
+    }
+  },
+  "required": ["deployment"],
+  "additionalProperties": false
+}

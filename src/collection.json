@@ -10,6 +10,10 @@
       "description": "Adds meetup.com integration to the website",
       "factory": "./meetup/index",
       "schema": "./meetup/schema.json"
+    },
+    "deployments": {
+      "description": "Adds different deployment builders to the project via their respective ng-add calls",
+      "factory": "./deployments/index#deployments"
     }
   }
 }
