@@ -9,7 +9,7 @@ import {
   NodeDependencyType,
   addPackageJsonDependency
 } from '@schematics/angular/utility/dependencies';
-import { of, Observable } from 'rxjs';
+import { of, Observable, from } from 'rxjs';
 import { concatMap, map } from 'rxjs/operators';
 
 export interface NpmRegistryPackage {
@@ -56,13 +56,13 @@ function getLatestNodeVersion(
  * @param args an array of package names to add to the project's dependencies
  */
 export function addPackageJsonDependencies(...args: string[]): Rule {
-  const packages = args.join(',');
+  const packages = args;
   return (tree: Tree, _context: SchematicContext): Observable<Tree> => {
     if (args.length === 0) {
       return of(tree);
     }
 
-    return of(packages).pipe(
+    return from(packages).pipe(
       concatMap(name => getLatestNodeVersion(name)),
       map((npmRegistryPackage: NpmRegistryPackage) => {
         const dependency: NodeDependency = {
