@@ -28,6 +28,10 @@ export default function(options: Schema): Rule {
 function prepareDependencies(options: Schema): Rule {
   const deps = ['@angular/material'];
 
+  if (options.addPrettier) {
+    deps.push('@schuchard/prettier');
+  }
+
   switch (options.deployment) {
     case 'Azure':
       deps.push('@azure/ng-deploy');
