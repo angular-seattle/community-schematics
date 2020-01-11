@@ -1,7 +1,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 ![npm (scoped)](https://img.shields.io/npm/v/@ng-seattle/community-schematics)
-![npm (tag)](https://img.shields.io/npm/v/@ng-seattle/community-schematics/next)  
+![npm (tag)](https://img.shields.io/npm/v/@ng-seattle/community-schematics/next)
 
 # Community Schematics
 
@@ -26,6 +26,17 @@ Then use `ng add` and follow the prompts to setup the project and you're good to
 ```bash
 $ ng add @ng-seattle/community-schematics
 ```
+
+### External Schematics Used
+
+Depending on the options you select during the `ng add` process, the following external `ng add` schematics can be invoked:
+
+- [@angular/material](https://github.com/angular/components/) (This is always invoked)
+- [@azure/ng-deploy](https://github.com/Azure/ng-deploy-azure)
+- [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages)
+- [@netlify-builder/deploy](https://github.com/ngx-builders/netlify-builder)
+- [@zeit/ng-deploy](https://github.com/zeit/ng-deploy-now)
+- [@schuchard/prettier](https://github.com/schuchard/prettier-schematic)
 
 ## Future Feature Plans
 
