@@ -7,7 +7,8 @@ Angular Schematics that generate a starter website for community groups.
 :white_check_mark: Generates a starter website, built with Angular 8, for your group  
 :white_check_mark: Uses Angular Material  
 :white_check_mark: Allows links to video hosting services and twitter  
-:white_check_mark: Displays events from your groups Meetup.com page
+:white_check_mark: Displays events from your groups Meetup.com page  
+:white_check_mark: `ng deploy` support to deploy your site to Azure, Now, Netlify, or Github Pages
 
 ## Getting Started
 
@@ -30,7 +31,6 @@ $ ng add @ng-seattle/community-schematics
 - [ ] Self hosted blogs for groups
 - [ ] Calendar management without Meetup.com
 - [ ] Email list support
-- [ ] Github Pages Support
 - Have an idea? Open an issue!
 
 ## Developing
