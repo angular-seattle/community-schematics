@@ -53,7 +53,7 @@ This project comes with a sandbox Angular application that you can use to test y
 
 ### Testing
 
-To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode. For convienience, there is a script that will clean the project, build it, and run the command line argouments to test. Simply run `npm test` to execture.
+To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode. For convienience, there is a script that will clean the project, build it, and run the command line argouments to test. Simply run `npm test` to exectute.
 
 Check the documentation with
 
