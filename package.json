@@ -1,6 +1,6 @@
 {
   "name": "@ng-seattle/community-schematics",
-  "version": "1.1.0",
+  "version": "1.2.2",
   "description": "Schematics for the Angular community",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -29,18 +29,19 @@
   "dependencies": {
     "@angular-devkit/core": "^8.2.0",
     "@angular-devkit/schematics": "^8.2.0",
-    "@angular/cdk": "^8.1.2",
-    "@schematics/angular": "^8.2.0",
-    "@types/jasmine": "^3.3.9",
-    "@types/node": "^8.0.31",
-    "jasmine": "^3.3.1",
-    "typescript": "~3.5.3"
+    "@schematics/angular": "^8.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@semantic-release/changelog": "^3.0.6",
+    "@semantic-release/git": "^8.0.0",
+    "@types/jasmine": "^3.3.9",
+    "@types/node": "^8.0.31",
     "cz-conventional-changelog": "^3.0.2",
-    "husky": "^3.1.0"
+    "husky": "^3.1.0",
+    "jasmine": "^3.3.1",
+    "typescript": "~3.5.3"
   },
   "config": {
     "commitizen": {
