@@ -5,5 +5,4 @@ export interface Schema {
   pastTalks: string;
   twitter: string;
   deployment: 'Azure' | 'Github Pages' | 'Netlify' | 'Now' | 'None';
-  addPrettier: boolean;
 }

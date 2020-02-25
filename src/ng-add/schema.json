@@ -38,12 +38,6 @@
       "default": "None",
       "enum": ["Azure", "Now", "Netlify", "Github Pages", "None"],
       "x-prompt": "Do you want to deploy your site with any of the following providers?"
-    },
-    "addPrettier": {
-      "description:": "Whether or not Prettier should be added to the project",
-      "type": "boolean",
-      "x-prompt": "Would you like to setup Prettier in your project?",
-      "default": [true]
     }
   },
   "required": ["orgName"],

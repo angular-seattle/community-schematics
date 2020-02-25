@@ -24,7 +24,6 @@ export function ngAddSetupProject(options: Schema): Rule {
       options.meetupName.length > 0 ? addMeetup(options) : noop(),
       addDeployment(options.deployment),
       addMaterial(options),
-      options.addPrettier ? addPrettier() : noop(),
       addFiles(options),
       updateScripts(options)
     ]);
@@ -39,16 +38,6 @@ function addMaterial(options: Schema): Rule {
     return externalSchematic('@angular/material', 'install', {
       options
     });
-  };
-}
-
-/**
- * A rule factory that adds Prettier to the project
- * @param options The options passed down to the schematic
- */
-function addPrettier(): Rule {
-  return (_tree: Tree, _context: SchematicContext) => {
-    return externalSchematic('@schuchard/prettier', 'add', {});
   };
 }
 
