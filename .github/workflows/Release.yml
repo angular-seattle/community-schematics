@@ -9,8 +9,6 @@ jobs:
     name: Release
     runs-on: ubuntu-18.04
     steps:
-      - name: Skip based on commit message
-        uses: veggiemonk/skip-commit@1.0.0
       - name: Checkout
         uses: actions/checkout@v1
       - name: Setup Node.js
