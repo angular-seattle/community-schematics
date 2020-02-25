@@ -1,10 +1,3 @@
-## [1.2.2](https://github.com/angular-seattle/community-schematics/compare/v1.2.1...v1.2.2) (2020-01-11)
-
-
-### Bug Fixes
-
-* **release:** force release after pipeline failure ([d36bde0](https://github.com/angular-seattle/community-schematics/commit/d36bde0585cbb5730c1a8c16b43b74f7cc5b58cc))
-
 ## [1.2.1](https://github.com/angular-seattle/community-schematics/compare/v1.2.0...v1.2.1) (2020-01-11)
 
 
