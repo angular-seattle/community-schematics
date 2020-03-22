@@ -5,7 +5,7 @@ import {
   chain
 } from '@angular-devkit/schematics';
 import { Schema } from './schema.model';
-import { addPackageJsonDependencies } from '../utils/npmjs';
+import { addPackageJsonDependencies, JsonDependency } from '../utils/npmjs';
 import {
   NodePackageInstallTask,
   RunSchematicTask
@@ -26,7 +26,9 @@ export default function(options: Schema): Rule {
  * @param options The options the user selected
  */
 function prepareDependencies(options: Schema): Rule {
-  const deps = ['@angular/material'];
+  const deps: JsonDependency[] = [
+    { name: '@angular/material', version: '^8.2.3' }
+  ];
 
   if (options.addPrettier) {
     deps.push('@schuchard/prettier');
