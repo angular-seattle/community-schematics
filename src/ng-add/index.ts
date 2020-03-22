@@ -26,9 +26,7 @@ export default function(options: Schema): Rule {
  * @param options The options the user selected
  */
 function prepareDependencies(options: Schema): Rule {
-  const deps: JsonDependency[] = [
-    { name: '@angular/material', version: '^8.2.3' }
-  ];
+  const deps: JsonDependency[] = ['@angular/material'];
 
   if (options.addPrettier) {
     deps.push('@schuchard/prettier');
