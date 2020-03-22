@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/angular-seattle/community-schematics/compare/v1.2.3...v1.2.4) (2020-03-22)
+
+
+### Bug Fixes
+
+* **dependencies:** keep dependencies targeted at Angular 8 ([e554813](https://github.com/angular-seattle/community-schematics/commit/e554813ae9ba1e62296f9a47dbba47c999344d36))
+
 ## [1.2.3](https://github.com/angular-seattle/community-schematics/compare/v1.2.2...v1.2.3) (2020-02-25)
 
 
