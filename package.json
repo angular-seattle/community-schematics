@@ -27,9 +27,9 @@
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {
-    "@angular-devkit/core": "^8.2.0",
-    "@angular-devkit/schematics": "^8.2.0",
-    "@schematics/angular": "^8.2.0"
+    "@angular-devkit/core": "^8.3.25",
+    "@angular-devkit/schematics": "^8.3.25",
+    "@schematics/angular": "^8.3.25"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
