@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/angular-seattle/community-schematics/compare/v1.2.4...v2.0.0) (2020-03-23)
+
+
+### Features
+
+* **angular:** add Angular 9 support ([9953268](https://github.com/angular-seattle/community-schematics/commit/9953268edba17a2720403d8b7059cff5af41f02e)), closes [#15](https://github.com/angular-seattle/community-schematics/issues/15)
+
+
+### BREAKING CHANGES
+
+* **angular:** This project now requires Angular 9 to run
+
 ## [1.2.4](https://github.com/angular-seattle/community-schematics/compare/v1.2.3...v1.2.4) (2020-03-22)
 
 
